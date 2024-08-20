@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MarqueController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +29,9 @@ Route::group(['prefix' => 'marque'], function () {
     Route::get('/form', [MarqueController::class, 'marqueForm'])->name('marque.form');
     Route::post('/create', [MarqueController::class, 'marqueCreate'])->name('marque.create');
     Route::delete('/destroy/{id}', [MarqueController::class, 'marqueDestroy'])->name('marque.destroy');
+});
+
+Route::group(['prefix' => 'profile'], function () {
+    Route::post('/create', [BlogController::class, 'profileCreate'])->name('profile.create');
+    Route::put('/update/{id}', [BlogController::class, 'profileUpdate'])->name('profile.update');
 });
