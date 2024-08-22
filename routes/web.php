@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MarqueController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +33,14 @@ Route::group(['prefix' => 'marque'], function () {
     Route::delete('/destroy/{id}', [MarqueController::class, 'marqueDestroy'])->name('marque.destroy');
 });
 
-Route::group(['prefix' => 'profile'], function () {
-    Route::post('/create', [BlogController::class, 'profileCreate'])->name('profile.create');
-    Route::put('/update/{id}', [BlogController::class, 'profileUpdate'])->name('profile.update');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/show', [ProfileController::class, 'showProfile'])->name('show.profile');
+        Route::put('/update/{id}', [ProfileController::class, 'updateProfile'])->name('update.profile');
+        Route::post('/change-password', [ProfileController::class, 'changePassword'])->name('change.password');
+    });
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+
 });
