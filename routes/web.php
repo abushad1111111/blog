@@ -41,11 +41,19 @@ Route::group(['prefix' => 'admin'], function () {
     });
     Route::group(['prefix' => 'job'], function () {
         Route::get('/list', [JobController::class, 'jobList'])->name('job.list');
+        Route::get('/create-form', [JobController::class, 'createJobForm'])->name('job.create.form');
         Route::post('/create', [JobController::class, 'createJob'])->name('job.create');
         Route::get('/edit/{id}', [JobController::class, 'editJob'])->name('job.edit');
         Route::put('/update/{id}', [JobController::class, 'updateJob'])->name('job.update');
         Route::delete('/destroy/{id}', [JobController::class, 'destroyJob'])->name('job.destroy');
-        
+    });
+    Route::group(['prefix' => 'service'], function () {
+        Route::get('/list', [ServiceController::class, 'serviceList'])->name('service.list');
+        Route::get('/create-form', [ServiceController::class, 'createServiceForm'])->name('service.create.form');
+        Route::post('/create', [ServiceController::class, 'createService'])->name('service.create');
+        Route::get('/edit/{id}', [ServiceController::class, 'editService'])->name('service.edit');
+        Route::put('/update/{id}', [ServiceController::class, 'updateService'])->name('service.update');
+        Route::delete('/destroy/{id}', [ServiceController::class, 'destroyService'])->name('service.destroy');
     });
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 

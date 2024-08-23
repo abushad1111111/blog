@@ -13,14 +13,13 @@ class JobController extends Controller
         return view('backend.jobs.list', compact('jobs'));
     }
 
-    public function createJob()
+    public function createJobForm()
     {
         return view('backend.jobs.create');
     }
 
-    public function store(Request $request)
+    public function createJob(Request $request)
     {
-        // Validate incoming request data
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|nullable|string',
@@ -34,7 +33,6 @@ class JobController extends Controller
             'experience_level' => 'nullable|in:entry-level,mid-level,senior-level,manager,executive',
             'education_level' => 'required|nullable|in:high school,associate,bachelor,master,doctorate',
             'industry_id' => 'nullable|string|max:255',
-            'job_type' => 'nullable|string|max:255',
             'posted_at' => 'nullable|date',
             'expires_at' => 'nullable|date|after_or_equal:posted_at',
             'application_deadline' => 'nullable|date|after_or_equal:posted_at',
@@ -65,7 +63,6 @@ class JobController extends Controller
             'experience_level' => 'nullable|in:entry-level,mid-level,senior-level,manager,executive',
             'education_level' => 'nullable|in:high school,associate,bachelor,master,doctorate',
             'industry_id' => 'nullable|string|max:255',
-            'job_type' => 'nullable|string|max:255',
             'posted_at' => 'nullable|date',
             'expires_at' => 'nullable|date|after_or_equal:posted_at',
             'application_deadline' => 'nullable|date|after_or_equal:posted_at',

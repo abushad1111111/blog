@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('experience_level')->nullable(); 
             $table->string('education_level')->nullable();
             $table->string('industry')->nullable(); 
-            $table->string('job_type')->nullable(); 
             $table->string('posted_at')->nullable(); 
             $table->string('expires_at')->nullable(); 
             $table->string('application_deadline')->nullable(); 
